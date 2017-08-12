@@ -33,7 +33,7 @@ class AsyncAPI {
    
     func alamoRequest(_ params : BodyParameters,  _ completionHandler: (Response<Any>) -> Void) {
         Thread.sleep(forTimeInterval: 0.2)
-        completionHandler(Response.response(params))
+        completionHandler(Response.response("salt, that's what you want"))
     }
     
     
