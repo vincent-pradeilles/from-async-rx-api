@@ -13,7 +13,7 @@ import RxSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let bag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -22,9 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print($0)
         }
         
+       
+        
         Observable.fromAsync(AsyncAPI().add(_:_:_:))(2, 3).subscribe(onNext: { (result) in
             print(result)
-        }).addDisposableTo(DisposeBag())
+        }).disposed(by: bag)
+        
+        AsyncAPI().requestCondiment(.salt).subscribe(onNext: { (response) in
+            print(response)
+        }, onError: { (error) in
+            print(error)
+        }, onCompleted: {
+            print("completed")
+        }).disposed(by: bag)
         
         return true
     }
