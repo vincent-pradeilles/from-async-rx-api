@@ -9,6 +9,13 @@
 import Foundation
 import RxSwift
 
+enum Response<T> {
+    case error(Error)
+    case response(T)
+}
+
+struct BodyParameters {}
+
 class AsyncAPI {
     
     func increment(_ arg: Int, _ completionHandler: (String) -> Void) {
@@ -22,4 +29,39 @@ class AsyncAPI {
         
         completionHandler("\(arg1 + arg2)")
     }
+    
+   
+    func alamoRequest(_ params : BodyParameters,  _ completionHandler: (Response<Any>) -> Void) {
+        Thread.sleep(forTimeInterval: 0.2)
+        completionHandler(Response.response("salt, that's what you want"))
+    }
+    
+    
+    func obsRequest<T>(_ param: BodyParameters) -> Observable<T> {
+        return Observable.create({ (o) -> Disposable in
+            self.alamoRequest(param, { (response) in
+                switch response {
+                case .response(let response as T):
+                    o.onNext(response)
+                default:
+                o.onError("error")
+                }
+                o.onCompleted()
+            })
+            return Disposables.create()
+        })
+    }
+    
+    func requestCondiment(_ type: Condiment) -> Observable<String> {
+        let param = BodyParameters()
+        return obsRequest(param)
+    }
 }
+
+enum Condiment {
+    case salt, pepper
+}
+
+
+extension String: Error {}
+
