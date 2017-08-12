@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF43FEC31F3F08FC0009D50D /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43FEC21F3F08FC0009D50D /* Observable+Extension.swift */; };
 		BFCBA3291F3EF70700755D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBA3281F3EF70700755D64 /* AppDelegate.swift */; };
 		BFCBA32B1F3EF70700755D64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBA32A1F3EF70700755D64 /* ViewController.swift */; };
 		BFCBA32E1F3EF70700755D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCBA32C1F3EF70700755D64 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF43FEC21F3F08FC0009D50D /* Observable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		BFCBA3251F3EF70700755D64 /* FromAsyncToRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FromAsyncToRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCBA3281F3EF70700755D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCBA32A1F3EF70700755D64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				BFCBA3281F3EF70700755D64 /* AppDelegate.swift */,
 				BFCBA32A1F3EF70700755D64 /* ViewController.swift */,
 				BFCBA3441F3EF8F300755D64 /* AsyncAPI.swift */,
+				BF43FEC21F3F08FC0009D50D /* Observable+Extension.swift */,
 				BFCBA3461F3EFFE000755D64 /* Curry.swift */,
 				BFCBA32C1F3EF70700755D64 /* Main.storyboard */,
 				BFCBA32F1F3EF70700755D64 /* Assets.xcassets */,
@@ -177,6 +180,7 @@
 			files = (
 				BFCBA32B1F3EF70700755D64 /* ViewController.swift in Sources */,
 				BFCBA3451F3EF8F300755D64 /* AsyncAPI.swift in Sources */,
+				BF43FEC31F3F08FC0009D50D /* Observable+Extension.swift in Sources */,
 				BFCBA3291F3EF70700755D64 /* AppDelegate.swift in Sources */,
 				BFCBA3471F3EFFE000755D64 /* Curry.swift in Sources */,
 			);
@@ -352,6 +356,7 @@
 				BFCBA3391F3EF70700755D64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

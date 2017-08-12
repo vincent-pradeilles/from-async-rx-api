@@ -18,17 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
-        AsyncAPI().request(2, 3) {
+        AsyncAPI().add(2, 3) {
             print($0)
         }
         
-        let curried = curry(AsyncAPI().request(_:_:_:))
-        
-        toRx(curried(2)(3)).subscribe(onNext: { (result) in
-            print(result)
-        }).addDisposableTo(DisposeBag())
-        
-        toRx(AsyncAPI().request(_:_:_:))(2, 3).subscribe(onNext: { (result) in
+        Observable.fromAsync(AsyncAPI().add(_:_:_:))(2, 3).subscribe(onNext: { (result) in
             print(result)
         }).addDisposableTo(DisposeBag())
         
