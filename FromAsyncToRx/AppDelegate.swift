@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var disposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Observable.fromAsync(AsyncAPI().add(_:_:_:))(2, 3).subscribe(onNext: { (result) in
             print(result)
-        }).addDisposableTo(DisposeBag())
+        }).addDisposableTo(disposeBag)
         
         return true
     }

@@ -11,15 +11,15 @@ import RxSwift
 
 extension Observable {
     
-    static func fromAsync<T, U>(_ asyncRequest: @escaping (T, U, (Element) -> Void) -> Void) -> (T, U) -> Observable<Element> {
+    static func fromAsync<T, U>(_ asyncRequest: @escaping (T, U, @escaping (Element) -> Void) -> Void) -> (T, U) -> Observable<Element> {
         return { (a: T, b: U) in Observable.fromAsync(curry(asyncRequest)(a)(b)) }
     }
     
-    static func fromAsync<T>(_ asyncRequest: @escaping (T, (Element) -> Void) -> Void) -> (T) -> Observable<Element> {
+    static func fromAsync<T>(_ asyncRequest: @escaping (T, @escaping (Element) -> Void) -> Void) -> (T) -> Observable<Element> {
         return { (a: T) in Observable.fromAsync(curry(asyncRequest)(a)) }
     }
     
-    static func fromAsync(_ asyncRequest: @escaping ((Element) -> Void) -> Void) -> Observable<Element> {
+    static func fromAsync(_ asyncRequest: @escaping ( @escaping (Element) -> Void) -> Void) -> Observable<Element> {
         return Observable.create({ (o) -> Disposable in
             
             asyncRequest({ (result) in
